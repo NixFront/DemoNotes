@@ -1,26 +1,38 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import NoteList from  './components/NoteList/NoteList.js';
 
 class App extends Component {
+    state = {
+    notes:{
+      1: {
+        id: 1,
+        noteName: "Note 1",
+        noteText: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis est ipsum soluta ducimus enim, perferendis rem sint similique amet, aspernatur quod repellendus dolor quas eveniet. Nisi odio inventore at ipsa.",
+        isDeleted: false
+      },
+      2: {
+        id: 2,
+        noteName: "Note 2",
+        noteText: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis est ipsum soluta ducimus enim, perferendis rem sint similique amet, aspernatur quod repellendus dolor quas eveniet. Nisi odio inventore at ipsa.",
+        isDeleted: false
+      },
+      3: {
+        id: 3,
+        noteName: "Note 3",
+        noteText: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis est ipsum soluta ducimus enim, perferendis rem sint similique amet, aspernatur quod repellendus dolor quas eveniet. Nisi odio inventore at ipsa.",
+        isDeleted: false
+      }
+    }
+  }
+  updateNotes(newNotes){
+    this.setState((state, props) => {
+      return {notes: newNotes};
+    });
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+        <NoteList notes = {this.state.notes} updateNotes = {this.updateNotes.bind(this)}/>
     );
   }
 }
